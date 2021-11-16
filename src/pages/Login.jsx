@@ -16,11 +16,6 @@ class Login extends Component {
   // guardarmos o estado da nossa aplicação.
   constructor() {
     super();
-    // aqui estamos fazemos uma relação entre o this com a função saveUser()
-    // com essa linha de código um tanto quanto obscura o this passa a ser
-    // visto dentro da nossa função saveUser nos permitindo dessa forma acessar
-    // nosso estado a paritr da função hora referenciada
-    this.saveUser = this.saveUser.bind(this);
     // aqui onde fica o estado da nossa aplicação
     this.state = {
       inputName: '',
@@ -30,6 +25,11 @@ class Login extends Component {
       // eslint-disable-next-line react/no-unused-state
       redirect: false,
     };
+    // aqui estamos fazemos uma relação entre o this com a função saveUser()
+    // com essa linha de código um tanto quanto obscura o this passa a ser
+    // visto dentro da nossa função saveUser nos permitindo dessa forma acessar
+    // nosso estado a paritr da função hora referenciada
+    this.saveUser = this.saveUser.bind(this);
   }
   // ***************************************************************************************** *
   // bem a fução abaixo explicitada não foi preciso fazer o bind dela dentro do constructor

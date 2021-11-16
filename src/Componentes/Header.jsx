@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from './Loading';
 import { getUser } from '../services/userAPI';
 
@@ -12,25 +13,20 @@ export default class Header extends Component {
     this.getUserName = this.getUserName.bind(this);
   }
 
+  componentDidMount() {
+    this.getUserName();
+  }
   // logo após renderizar minha aplicação vou utilizar a função espcial
   // com componentDidMount() para executar a lógica de buscar uma dada pessoa
   // na api
 
-  // eslint-disable-next-line react/sort-comp
   async getUserName() {
-    // eslint-disable-next-line react/no-unused-state
     this.setState({ loading: true },
       async () => {
         const request = await getUser();
         const { name } = request;
-        // eslint-disable-next-line react/no-unused-state
         this.setState({ loading: false, inputName: name });
       });
-  }
-
-  // eslint-disable-next-line space-before-blocks
-  componentDidMount(){
-    this.getUserName();
   }
 
   render() {
@@ -41,6 +37,14 @@ export default class Header extends Component {
         <p data-testid="header-user-name">
           { inputName }
         </p>
+        <nav>
+          {/* Link redireciona para a pagina de pesquisa  */ }
+          <Link to="/search" data-testid="link-to-search"> Search </Link>
+          {/* Link redireciona para a pagina de musicas  */ }
+          <Link to="/favorites" data-testid="link-to-favorites"> Favorites </Link>
+          {/* Link redireciona para a pagina de exibição de perfil  */ }
+          <Link to="/profile" data-testid="link-to-profile"> Profile </Link>
+        </nav>
       </header>
     );
   }
