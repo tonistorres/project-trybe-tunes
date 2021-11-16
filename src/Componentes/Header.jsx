@@ -6,10 +6,12 @@ import { getUser } from '../services/userAPI';
 export default class Header extends Component {
   constructor() {
     super();
+
     this.state = {
       loading: false,
       inputName: '',
     };
+
     this.getUserName = this.getUserName.bind(this);
   }
 
