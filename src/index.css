@@ -17,3 +17,66 @@ code {
   display: flex;
   justify-content: center;
 }
+.App-container-head{
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(-45deg,#ffff66,  #fff105, #ffff7a, #eeebd9);
+  border:1px solid #333;
+  width: 100%;
+  height: 80px;
+  font-size: 28px;
+  font-family:fantasy ;
+  font-weight: 700;
+
+}
+.App-style-container-forms{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1px;
+}
+.App-style-head{
+  display: flex;
+  background-color: #ddd9ce;
+  width: 100%;
+}
+
+.App-style-nav-links{
+  display: flex;
+  width: 500px;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-around;
+  font-family:fantasy ;
+  font-size: 20px;
+  font-weight: 700;
+}
+.App-style-name-user{
+  font-size: 20px;
+  font-family: fantasy;
+  font-weight: 700;
+}
+.App-form-container{
+  margin-top: 100px;
+}
+.App-style-Resultado{
+  margin-top: 50px;
+  width: 100%;
+  background-color: yellowgreen;
+}
+input{
+  width: 600px;
+  height: 40px;
+  border-radius: 5%;
+  font-size: 20px;
+  font-family: fantasy;
+  font-weight: 500;
+}
+
+button{
+  width: 120px;
+  height: 45px;
+  margin-left: 20px;
+}

@@ -35,11 +35,13 @@ export default class Header extends Component {
     const { loading, inputName } = this.state;
     if (loading) return <Loading />;
     return (
-      <header data-testid="header-component">
-        <p data-testid="header-user-name">
-          { inputName }
-        </p>
-        <nav>
+      <header data-testid="header-component" className="App-style-head">
+        <div className="App-style-name-user">
+          <p data-testid="header-user-name">
+            {inputName}
+          </p>
+        </div>
+        <nav className="App-style-nav-links">
           {/* Link redireciona para a pagina de pesquisa  */ }
           <Link to="/search" data-testid="link-to-search"> Search </Link>
           {/* Link redireciona para a pagina de musicas  */ }

@@ -20,9 +20,7 @@ class Login extends Component {
     this.state = {
       inputName: '',
       isButtonDisabled: true,
-      // eslint-disable-next-line react/no-unused-state
       load: false,
-      // eslint-disable-next-line react/no-unused-state
       redirect: false,
     };
     // aqui estamos fazemos uma relação entre o this com a função saveUser()

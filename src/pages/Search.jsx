@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from '../Componentes/Header';
+import Loading from '../Componentes/Loading';
+import ResultPesquisa from '../Componentes/ResultPesquisa';
+
 // constante criada para ser utilizada na estrutrua condiconal
 // if para controlar a quantidade de caracter que está sendo digitado
 // no campo nome
@@ -11,9 +15,32 @@ class Search extends Component {
     this.state = {
       inputName: '',
       isButtonDisabled: true,
+      load: false,
+      arrAlbums: [],
+      artist: '',
+
     };
-    this.validateInput = this.validateInput.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  async handleClick() {
+    this.setState({ load: true }, async () => {
+      const { inputName } = this.state;
+      const returnAlbum = await searchAlbumsAPI(inputName);
+      console.log(returnAlbum);
+      this.setState({ load: false });
+      if (returnAlbum.length > 0) {
+        this.setState({
+          arrAlbums: returnAlbum,
+          artist: inputName,
+          inputName: '',
+        });
+      } else {
+        this.setState({ arrAlbums: [], artist: '' });
+      }
+    });
+  }
+
   // ***************************************************************************************** *
   // bem a fução abaixo explicitada não foi preciso fazer o bind dela dentro do constructor
   // devido ela ser uma arrow function, uma arrow function não precisa ser relacionada com um
@@ -33,6 +60,7 @@ class Search extends Component {
     const { name, value } = target;
     // se o numero de caracter digitado for maior que o número contido na constante
     // NUBER_MAX_CARACTER desabilite o botão, caso contrário habilite o botão
+    console.log(name);
     if (value.length >= NUBER_MAX_CARACTER) {
       this.setState({ [name]: value, isButtonDisabled: false });
     } else {
@@ -41,11 +69,14 @@ class Search extends Component {
   }
 
   render() {
-    const { isButtonDisabled, inputName } = this.state;
+    const { inputName, isButtonDisabled, load, arrAlbums, artist } = this.state;
+    console.log(arrAlbums);
+    if (load) return <Loading />;
+    // if(arrAlbums.length)
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="App-style-container-forms">
         <Header />
-        <form>
+        <form className="App-form-container">
           <input
             placeholder="Pesquisar Artista"
             data-testid="search-artist-input"
@@ -59,10 +90,17 @@ class Search extends Component {
             type="button"
             data-testid="search-artist-button"
             disabled={ isButtonDisabled }
+            onClick={ this.handleClick }
           >
             Pesquisar
           </button>
         </form>
+        {
+          arrAlbums.length > 0
+            ? <ResultPesquisa arrAlbums={ arrAlbums } artist={ artist } />
+            : <p>Nenhum álbum foi encontrado</p>
+        }
+
       </div>
     );
   }

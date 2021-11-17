@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
-import Search from './pages/Seach';
+import Search from './pages/Search';
 import Album from './pages/Album';
 import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
@@ -12,7 +12,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>TrybeTunes</p>
+        <div className="App-container-head">
+          <p>TrybeTunes</p>
+        </div>
         <BrowserRouter>
           <Switch>
             <Route path="/profile/edit" component={ ProfileEdit } />
