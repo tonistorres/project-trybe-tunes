@@ -23,12 +23,26 @@ class Search extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  // *******************************************************************************************
+  // Função handleClick é uma função que se utiliza de assincronismo a principal funcionalidade
+  // é fazer uma requisição à uma API que trará um array de objetos contendo albuns de   música
+  // de um determinado cantor dependendo do nome passado para o mesmo.
+  // ela é envolta por um this.Setstate que é uma função assincrona ou que tem essa caracteristica
+  // de trabalhar como uma função assincrona por baixo dos panos, onde a primeira modificação (rendereização)
+  // que ela irá executar é executar o load do carregamento caso seu estado esteja true(verdadeiro)
+  // em seguida é feito uma desconstrução do inputName que será utilizado apra passar como parâmentro para
+  // a função searchAlbumsAPI o retorno é um array de obejtos que será atribuido a returnAlbum
+
   async handleClick() {
     this.setState({ load: true }, async () => {
       const { inputName } = this.state;
       const returnAlbum = await searchAlbumsAPI(inputName);
-      console.log(returnAlbum);
+      // após a execução da função searchAmbumsAPI() é modificado o estado novamente para load:false
       this.setState({ load: false });
+      // Nesse ponto temos um teste condicional que faz a seguinte verificação
+      // se a const returnAmbum que foi atribuída for maior que zero, ou seja, contenha algo nela
+      // mude o valor da chave do componente no state para os valores abaixo setados.
+      // caso contrário arrAlbums receber um array vazio e artist recebe vazio
       if (returnAlbum.length > 0) {
         this.setState({
           arrAlbums: returnAlbum,
