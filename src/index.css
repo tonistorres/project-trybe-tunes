@@ -66,6 +66,9 @@ code {
   width: 100%;
   background-color: yellowgreen;
 }
+.App-style-album{
+  background-color: yellowgreen ;
+}
 input{
   width: 600px;
   height: 40px;

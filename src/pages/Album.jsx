@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Componentes/Header';
-import CardMusic from '../Componentes/CardMusic';
+import MusicCard from '../Componentes/MusicCard';
 import getMusics from '../services/musicsAPI';
+import '../index.css';
 // *****************************************
 // Contribuição Qt07 - Gabriel Pinheiro //
 // Implementação: Tonis Tores          //
@@ -37,13 +38,18 @@ class Album extends Component {
     const { singer, listMusic, arrayOfMusic } = this.state;
     const [, ...rest] = arrayOfMusic; // , tira o primeiro elemento do array
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="App-style-album">
         <Header />
         <span data-testid="artist-name">{ singer }</span>
         <span data-testid="album-name">{ listMusic }</span>
         <div>
-          {rest.map((music, index) => (
-            <CardMusic key={ index } { ...music } /> // mudar a chave
+          {rest.map(({ trackName, previewUrl, trackId }) => (
+            <MusicCard
+              key={ trackId }
+              trackId={ trackId }
+              trackName={ trackName }
+              previewUrl={ previewUrl }
+            />
           ))}
         </div>
       </div>

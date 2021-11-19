@@ -74,7 +74,6 @@ class Search extends Component {
     const { name, value } = target;
     // se o numero de caracter digitado for maior que o número contido na constante
     // NUBER_MAX_CARACTER desabilite o botão, caso contrário habilite o botão
-    console.log(name);
     if (value.length >= NUBER_MAX_CARACTER) {
       this.setState({ [name]: value, isButtonDisabled: false });
     } else {
@@ -84,7 +83,6 @@ class Search extends Component {
 
   render() {
     const { inputName, isButtonDisabled, load, arrAlbums, artist } = this.state;
-    console.log(arrAlbums);
     if (load) return <Loading />;
     // if(arrAlbums.length)
     return (
