@@ -4,8 +4,8 @@ import Loading from './Loading';
 import { addSong } from '../services/favoriteSongsAPI';
 // https://www.w3schools.com/tags/att_input_type_checkbox.asp
 export default class CardMusic extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     // para iniciar o estado temos inicialmente um load que
     // tem por funcionalidade efetuar o controle de quando
     // de quando o componente Load entra e sai de cena. funciona
@@ -16,12 +16,19 @@ export default class CardMusic extends Component {
     this.state = {
       load: false,
       checked: false,
+
     };
     // Aqui temos o bind fazendo com que o this possa ser visto
     // detro da função onClickChecked permitidos que a mesma possa
     // fazer acesso ao estado do componente o que faz todo sentido
-    this.onClickChecked = this.onClickChecked.bind(this);
+    this.onChangeChecked = this.onChangeChecked.bind(this);
   }
+
+  // componentDidMount() {
+  //   this.toRecoverFavorite();
+  // }
+
+  // cria a função logo abaixo toRecoverFavorite();
 
   // Essa função desconstroi o objeto event a chave target pegando o valor contido
   // no componente que esse objeto referencia no nosso caso um campo do tipo input
@@ -34,14 +41,19 @@ export default class CardMusic extends Component {
   // checked: ex.: se true o a caixa de seleção fica checada caso contrário fica limpa.
   // logo em seguida é feito uma requisição ao método assincrono addSong passando o value (trackId) como
   // parâmetro e o estado do carregamento load é setado como false terminando a rederização da barra load.
-  async onClickChecked({ target: { value } }) {
+  async onClickChecked(objetc) {
+    this.setState({ load: true },
+      async () => {
+        await addSong(objetc);
+        this.setState({ load: false });
+      });
+  }
+
+  onChangeChecked({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      load: true,
-      checked: true,
-    });
-    await addSong(value);
-    this.setState({
-      load: false,
+      [name]: value,
     });
   }
 
@@ -65,10 +77,12 @@ export default class CardMusic extends Component {
           <input
             type="checkbox"
             id="checkbox-music"
+            name="checked"
+            value={ checked }
             defaultChecked={ checked }
-            value={ trackId }
             data-testid={ `checkbox-music-${trackId}` }
-            onClick={ this.onClickChecked }
+            onClick={ () => this.onClickChecked({ trackName, previewUrl, trackId }) }
+            onChange={ this.onChangeChecked }
           />
         </label>
       </div>
