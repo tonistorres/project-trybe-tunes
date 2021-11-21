@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loading from '../Componentes/Loading';
 import MusicCard from '../Componentes/MusicCard';
 import Header from '../Componentes/Header';
+import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 // *****************************************
 // Contribuição Qt07-09-10 - Gabriel Pinheiro //
