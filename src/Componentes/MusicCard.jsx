@@ -118,7 +118,6 @@ export default class CardMusic extends Component {
 CardMusic.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
-  eventHandler: PropTypes.func.isRequired,
   trackId: PropTypes.number.isRequired,
   arrFavorites: PropTypes.arrayOf(PropTypes.shape({
     trackId: PropTypes.number.isRequired,
