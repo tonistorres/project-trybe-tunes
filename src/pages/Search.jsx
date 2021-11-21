@@ -3,6 +3,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from '../Componentes/Header';
 import Loading from '../Componentes/Loading';
 import ResultPesquisa from '../Componentes/ResultPesquisa';
+import '../Componentes/personalizacao.css';
 
 // constante criada para ser utilizada na estrutrua condiconal
 // if para controlar a quantidade de caracter que está sendo digitado
@@ -90,7 +91,8 @@ class Search extends Component {
         <Header />
         <form className="App-form-container">
           <input
-            placeholder="Pesquisar Artista"
+            className="input-style-search"
+            placeholder="🤖 Pesquisar por Artista"
             data-testid="search-artist-input"
             type="text"
             name="inputName"
@@ -107,12 +109,13 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
-        {
-          arrAlbums.length > 0
-            ? <ResultPesquisa arrAlbums={ arrAlbums } artist={ artist } />
-            : <p>Nenhum álbum foi encontrado</p>
-        }
-
+        <section>
+          {
+            arrAlbums.length > 0
+              ? <ResultPesquisa arrAlbums={ arrAlbums } artist={ artist } />
+              : <p>Nenhum álbum foi encontrado</p>
+          }
+        </section>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './index.css';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Album from './pages/Album';
@@ -11,10 +12,7 @@ import NotFound from './pages/NotFound';
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <div className="App-container-head">
-          <p>TrybeTunes</p>
-        </div>
+      <div className="App-style-Fundo-main">
         <BrowserRouter>
           <Switch>
             <Route path="/profile/edit" component={ ProfileEdit } />

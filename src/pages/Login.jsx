@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import '../Componentes/personalizacao.css';
+import user from '../assets/user.jpg';
 import Loading from '../Componentes/Loading';
 import { createUser } from '../services/userAPI';
 // constante criada para ser utilizada na estrutrua condiconal
@@ -74,11 +76,14 @@ class Login extends Component {
     if (redirect) return <Redirect to="/search" />;
     if (load) return <Loading />;
     return (
-      <div data-testid="page-login">
-        <label htmlFor="input-name">
-          Nome:
+      <div data-testid="page-login" className="login-styles">
+        <h1> 💫 Music Collection Versão 1.0 Beta </h1>
+        <label htmlFor="input-name" className="style-label-img-input">
+          <img className="img-login-personalize" src={ user } alt="logo user" />
           <input
+            className="input-style-login"
             name="inputName"
+            placeholder="Usuario"
             type="text"
             id="input-name"
             data-testid="login-name-input"

@@ -1,47 +1,41 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
-import { addSong } from '../services/favoriteSongsAPI';
-// https://www.w3schools.com/tags/att_input_type_checkbox.asp
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
+
+// *****************************************
+// Contribuição Qt07-09-10 - Gabriel Pinheiro //
+// Implementação: Tonis Tores          //
+// **************************************************************
+// https://www.w3schools.com/tags/att_input_type_checkbox.asp //
+// ********************************************************** //
 export default class CardMusic extends Component {
-  constructor(props) {
-    super(props);
-    // para iniciar o estado temos inicialmente um load que
-    // tem por funcionalidade efetuar o controle de quando
-    // de quando o componente Load entra e sai de cena. funciona
-    // como uma flag de controle. Em nosso caso que será cotrolada
-    // aqui no estado do componente MusicCard. Não obstante temos
-    // também uma propriedade checked que fará o controle de quando
-    // o campo tá checado ou nao, seguindo a mesma dinâmica do load.
+  constructor() {
+    super();
     this.state = {
       load: false,
       checked: false,
-
     };
-    // Aqui temos o bind fazendo com que o this possa ser visto
-    // detro da função onClickChecked permitidos que a mesma possa
-    // fazer acesso ao estado do componente o que faz todo sentido
     this.onChangeChecked = this.onChangeChecked.bind(this);
+    this.onClickCheckedSaveLis = this.onClickCheckedSaveLis.bind(this);
+    this.isFavorite = this.isFavorite.bind(this);
+    this.removeList = this.removeList.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.toRecoverFavorite();
-  // }
+  // ******************************//
+  // Descrevendo a funcionalidade://
+  // ****************************//
+  // Documentação:https://pt-br.reactjs.org/docs/react-component.html#componentdidmount
+  // Logo aós ser montado a página será invocado a comparação do array de musicas
+  // com o arry de favorites e executado o checked na lista por meios do método
+  // componentDidMount que tem no seu escopo uma chamada da função this.isFavorite
+  // ******************************************************************************
 
-  // cria a função logo abaixo toRecoverFavorite();
+  componentDidMount() {
+    this.isFavorite();
+  }
 
-  // Essa função desconstroi o objeto event a chave target pegando o valor contido
-  // no componente que esse objeto referencia no nosso caso um campo do tipo input
-  // do tipo checked. Em nosso caso o value aqui passa o id da música capturado por
-  // por meio de propos a partir de componente Album.jsx.
-  // Essa funão é invocada a partir de um elemento onClick onde recebe o value que é o
-  // trackId e logo em seguida modifica o estado de false para true e executa o evento
-  // de carregamento no render, modifica o estado do botão checked na propriedade defaultChecked
-  // que é um propriedade do HTML que dependendo do boolean setado pde alterar o compostamento do
-  // checked: ex.: se true o a caixa de seleção fica checada caso contrário fica limpa.
-  // logo em seguida é feito uma requisição ao método assincrono addSong passando o value (trackId) como
-  // parâmetro e o estado do carregamento load é setado como false terminando a rederização da barra load.
-  async onClickChecked(objetc) {
+  async onClickCheckedSaveLis(objetc) {
     this.setState({ load: true },
       async () => {
         await addSong(objetc);
@@ -50,22 +44,54 @@ export default class CardMusic extends Component {
   }
 
   onChangeChecked({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
+    this.setState({ checked: target.checked }, () => {
+      const { checked } = this.state;
+      const { trackName, previewUrl, trackId } = this.props;
+      if (checked) return this.onClickCheckedSaveLis({ trackName, previewUrl, trackId });
+      return this.removeList({ trackName, previewUrl, trackId });
     });
   }
 
+  // ******************************//
+  // Descrevendo a funcionalidade://
+  // ****************************//
+  // Documentação:https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+  // Testar se ao menos um dos elementos no arrFavorites passsa no teste
+  // implementado pela função atribuída e retorna value TRUE ou FALSE
+  // *********************************************************************************************************
+  // Neste caso específico usamos uma HOF SOME para comparar se pelo menos um dos elementos contido dentro do
+  // arrFavorites se correlaciona com o trackId recebido por props que é uma das propriedas do array onde contem
+  // todas as músicas recebidas da API que foi tratadas com o [, ... rest] em album e agora sendo trabalhado somente
+  // a propriedade trackId no comparativo do array de favorites com array de music
+  isFavorite() {
+    const { arrFavorites, trackId } = this.props;
+    if (arrFavorites
+      .some((favorite) => favorite.trackId === trackId)) {
+      this.setState({ checked: true });
+    }
+  }
+
+  async removeList(object) {
+    this.setState({ load: true },
+      async () => {
+        await removeSong(object);
+        this.setState({ load: false });
+      });
+  }
+
+  // ******************************//
+  // Descrevendo a Funcionalidade //
+  // ****************************//
   // O método render fará toda rederização do nosso componente MusicCard.jsx.
   // Uma atualização pode ser causada por alterações em props ou no state
   // conforme explicita documentação:https://pt-br.reactjs.org/docs/react-component.html
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId, eventHandler } = this.props;
     const { load, checked } = this.state;
+    console.log('Checked no estado como tá?', checked);
     if (load) return <Loading />;
     return (
-      <div>
+      <div className="Muisc-card-container-main">
         <span>{trackName}</span>
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
@@ -77,11 +103,10 @@ export default class CardMusic extends Component {
           <input
             type="checkbox"
             id="checkbox-music"
-            name="checked"
-            value={ checked }
-            defaultChecked={ checked }
+            name="card-checked"
+            checked={ checked }
             data-testid={ `checkbox-music-${trackId}` }
-            onClick={ () => this.onClickChecked({ trackName, previewUrl, trackId }) }
+            onClick={ this.eventHandler }
             onChange={ this.onChangeChecked }
           />
         </label>
@@ -93,5 +118,9 @@ export default class CardMusic extends Component {
 CardMusic.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
+  eventHandler: PropTypes.func.isRequired,
   trackId: PropTypes.number.isRequired,
+  arrFavorites: PropTypes.arrayOf(PropTypes.shape({
+    trackId: PropTypes.number.isRequired,
+  })).isRequired,
 };

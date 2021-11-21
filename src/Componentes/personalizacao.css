@@ -1,0 +1,82 @@
+.App-style-container-forms {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.App-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.input-style-login {
+  border-radius: 10px;
+  font-size: 20px;
+  height: 40px;
+  width: 250px;
+}
+
+.input-style-search {
+  border-radius: 10px;
+  font-size: 20px;
+  height: 40px;
+  width: 800px;
+}
+
+.App-style-cabecalho-result {
+  background: white;
+  display: flex;
+  height: 65px;
+  justify-content: center;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.login-styles {
+  align-items: center;
+  display: flex;
+  height: 65px;
+  justify-content: end;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  height: 45px;
+  margin-left: 18px;
+  margin-right: 18px;
+  width: 90px;
+
+}
+
+button:hover {
+  background: #e8f0fe;
+  border: 2px solid black;
+}
+
+h2 {
+  color: #333;
+  font-family: Arial , Helvetica , sans-serif;
+  font-size: 25px;
+}
+
+.img-login-personalize {
+  height: 85px;
+  padding: 18px;
+  width: 85px;
+}
+
+.styl-img-name-login {
+  align-items: center;
+  display: flex;
+}
+
+.style-label-img-input {
+  align-items: center;
+  display: flex;
+}
+

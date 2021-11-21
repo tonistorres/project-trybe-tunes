@@ -1,15 +1,21 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding:0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+font: 400 1rem 'Roboto', sans-serif; 
+width: 100vw;
+height: 100vh; 
+
+  
+  background: url('../src/assets/backGroundFundo.jpg');
+  background-position: center;
+  background-size:cover; 
+  background-position:top; 
+  background: cover; 
+  
 }
 
 .loading {
@@ -18,68 +24,105 @@ code {
   justify-content: center;
 }
 .App-container-head{
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(-45deg,#ffff66,  #fff105, #ffff7a, #eeebd9);
+  background: #292D3E;
   border:1px solid #333;
-  width: 100%;
-  height: 80px;
-  font-size: 28px;
-  font-family:fantasy ;
-  font-weight: 700;
-
-}
-.App-style-container-forms{
+  color: whitesmoke;
   display: flex;
+  font-size: 28px;
+  font-weight: 700;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1px;
-}
+  height: 80px;
+  width: 100%;
+ }
+
 .App-style-head{
   display: flex;
-  background-color: #ddd9ce;
+  height: 55px;
+  justify-content: start;
   width: 100%;
 }
 
 .App-style-nav-links{
-  display: flex;
-  width: 500px;
   align-items: center;
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  justify-content: space-around;
   padding-left: 20px;
   padding-right: 20px;
-  justify-content: space-around;
-  font-family:fantasy ;
-  font-size: 20px;
-  font-weight: 700;
-}
-.App-style-name-user{
-  font-size: 20px;
-  font-family: fantasy;
-  font-weight: 700;
-}
-.App-form-container{
-  margin-top: 100px;
-}
-.App-style-Resultado{
-  margin-top: 50px;
   width: 100%;
-  background-color: yellowgreen;
+  background-color: whitesmoke;
+  
 }
-.App-style-album{
-  background-color: yellowgreen ;
+a:link {
+  color:red;
+  background:whitesmoke ;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 25px;
+  text-decoration:none;
 }
-input{
-  width: 600px;
-  height: 40px;
-  border-radius: 5%;
-  font-size: 20px;
-  font-family: fantasy;
-  font-weight: 500;
+a:link:hover{
+  height: 35px;
+  background-color: #5d4291;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a:visited {
+  color:#5d4291;
+  font-weight: 200;
+  text-decoration:none;
+}
+a:hover {
+  color:#000000;
+  text-decoration:underline;
+}
+a:active {
+  color:#333;
+  text-decoration:underline;
+  background-color:#000000;
 }
 
-button{
-  width: 120px;
-  height: 45px;
-  margin-left: 20px;
+.App-style-name-user{
+  display: flex;
+  background-color: whitesmoke;
+  font-size: 20px;
+  width: 200px;
+}
+
+.Resul-style-pesquisa{
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Result-cart-album{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 12px 12px 12px 12px;
+  width: 160px;
+}
+.App-style-album{
+  background-color: yellow ;
+  border: 5px solid black;
+ }
+.Muisc-card-container-main{
+  background-color: whitesmoke;
+  border: 5px solid green;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Album-title-style{
+  width: 100%;
+  height: 500px;
+  background: yellow;
+  border: 15px solid black;
 }
