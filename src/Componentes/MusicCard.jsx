@@ -86,7 +86,7 @@ export default class CardMusic extends Component {
   // Uma atualização pode ser causada por alterações em props ou no state
   // conforme explicita documentação:https://pt-br.reactjs.org/docs/react-component.html
   render() {
-    const { trackName, previewUrl, trackId, eventHandler } = this.props;
+    const { trackName, previewUrl, trackId } = this.props;
     const { load, checked } = this.state;
     console.log('Checked no estado como tá?', checked);
     if (load) return <Loading />;
