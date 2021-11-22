@@ -20,49 +20,12 @@ height: 100vh;  */
 
 /* Search.jsx recebe o componente ResultPesquisa*/
 .container-main-search{
+align-items: center;  
 border: 40px solid whitesmoke;
 display: flex;
 flex-direction: row;
+justify-content: center;
 width: 100%;
-}
-
-/* Card ResultPesquisa.jsx**/
-.container-main-results{
-background-color: #fff;
-display: flex;
-flex-direction: column;
-width: 100%;
-}
-
-/** Cabecalho de Results */
-.container-albuns-head { 
-  background-color: whitesmoke;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 65px;
-}
-
-/** Cards dentro de ResultPesquisa.jsx  */
-.container-cards-body{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-/** Cor interna do Card ResultPesquisa.jsx  */
-.Result-cart-album{
-  align-items: center;
-  background-color:white;
-  display: flex;
-  flex-direction: column;
-    justify-content: space-around;
-    margin: 10px 10px 10px 10px;
-  width: 180px;
-  height: 260px;
-  border: 0.5px solid black;
 }
 
 .loading {
@@ -84,7 +47,7 @@ width: 100%;
 
 .App-style-head{
   display: flex;
-  height: 55px;
+  height: 65px;
   justify-content: start;
   width: 100%;
 }
@@ -152,13 +115,7 @@ a:active {
   background-color: yellow ;
   border: 5px solid black;
  }
-.Muisc-card-container-main{
-  background-color: whitesmoke;
-  border: 5px solid green;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+
 
 .Album-title-style{
   width: 100%;

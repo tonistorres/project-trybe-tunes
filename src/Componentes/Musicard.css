@@ -1,0 +1,18 @@
+.Muisc-card-container-main {
+  align-items: center;
+  background-color: #333;
+  border: 0.5px solid  #5d4291;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  padding-top: 10px;
+}
+
+.container-main-muiscard{
+  background-color: #5d4291;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 700;
+}

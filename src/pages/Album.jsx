@@ -89,12 +89,10 @@ class Album extends Component {
     const [, ...rest] = arrayOfMusic; // , tira o primeiro elemento do array espalhando propriedades no array
     if (load) return <Loading />;
     return (
-      <div data-testid="page-album">
-        {/* <Header className="Album-title-style">
-        </Header> */}
+      <div data-testid="page-album" className="container-main-muiscard">
         <Header />
-        <p data-testid="artist-name">{artist}</p>
-        <p data-testid="album-name">{colection}</p>
+        <p data-testid="artist-name">{ artist }</p>
+        <p data-testid="album-name">{ colection }</p>
         <div>
           {rest.map(({ trackName, previewUrl, trackId }) => (
             <MusicCard
@@ -103,6 +101,8 @@ class Album extends Component {
               trackName={ trackName }
               previewUrl={ previewUrl }
               arrFavorites={ arrFavorites }
+              artist={ artist }
+              colection={ colection }
             />
           ))}
         </div>

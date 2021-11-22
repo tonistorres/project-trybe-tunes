@@ -112,7 +112,7 @@ class Search extends Component {
           {
             arrAlbums.length > 0
               ? <ResultPesquisa arrAlbums={ arrAlbums } artist={ artist } />
-              : <p>Nenhum álbum foi encontrado</p>
+              : <p className="result-nenhum-album-encon">Nenhum álbum foi encontrado</p>
           }
         </section>
       </div>

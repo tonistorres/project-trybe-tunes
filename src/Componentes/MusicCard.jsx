@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import './Musicard.css';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 // *****************************************

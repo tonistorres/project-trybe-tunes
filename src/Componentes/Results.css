@@ -1,0 +1,56 @@
+/* Card ResultPesquisa.jsx **/
+.container-main-results {
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  font: 15px;
+  font-weight: 700;
+  width: 100%;
+}
+
+/** Cabecalho de Results */
+.container-albuns-head {
+  align-items: center;
+  background-color: #5d4291;
+  color: whitesmoke;
+  display: flex;
+  height: 65px;
+  justify-content: center;
+}
+
+/** Cards dentro de ResultPesquisa.jsx  */
+.container-cards-body {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/** Card do Album ResultPesquisa.jsx  */
+.Result-cart-album {
+  align-items: center;
+  background-color: white;
+  border: 0.5px solid black;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  height: 260px;
+  justify-content: space-around;
+  width: 180px;
+}
+
+.result-style-collection {
+  align-items: center;
+  border: 1px solid whitesmoke;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.result-nenhum-album-encon {
+  color: #5d4291;
+  font-size: 25px;
+  font-weight: 700;
+}

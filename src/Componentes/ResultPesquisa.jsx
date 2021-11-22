@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../index.css';
+import './Results.css';
 import './personalizacao.css';
 
 export default class ResultPesquisa extends Component {
@@ -23,12 +23,20 @@ export default class ResultPesquisa extends Component {
                   alt="Coletânea de Musica"
                 />
                 <h2>
-                  <span data-testid="artist-name">
+                  <span
+                    data-testid="artist-name"
+                    className="result-style-collection"
+                  >
                     Artista :
                     { colectionMusic.artistName }
                   </span>
                 </h2>
-                <span data-testid="album-name">{ colectionMusic.collectionName }</span>
+                <span
+                  data-testid="album-name"
+                  className="result-style-collection"
+                >
+                  { colectionMusic.collectionName }
+                </span>
                 <Link
                   data-testid={ `link-to-album-${colectionMusic.collectionId}` }
                   to={ `/album/${colectionMusic.collectionId}` }
