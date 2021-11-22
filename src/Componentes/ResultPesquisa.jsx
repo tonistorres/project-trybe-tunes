@@ -28,7 +28,7 @@ export default class ResultPesquisa extends Component {
                     { colectionMusic.artistName }
                   </span>
                 </h2>
-                <span data-testid="album-name">{ colectionMusic.collectionName }</span> 
+                <span data-testid="album-name">{ colectionMusic.collectionName }</span>
                 <Link
                   data-testid={ `link-to-album-${colectionMusic.collectionId}` }
                   to={ `/album/${colectionMusic.collectionId}` }
