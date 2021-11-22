@@ -7,15 +7,14 @@ import './personalizacao.css';
 export default class ResultPesquisa extends Component {
   render() {
     const { arrAlbums, artist } = this.props;
-    console.log('Array Resultado Pesquisa:', arrAlbums);
     return (
-      <section>
-        <header className="App-style-cabecalho-result">
+      <section className="container-main-results">
+        <div className="container-albuns-head">
           <h2>
-            {`Resultado de álbuns de: ${artist}`}
+            { `Resultado de álbuns de: ${artist}`}
           </h2>
-        </header>
-        <div className="Resul-style-pesquisa">
+        </div>
+        <div className="container-cards-body">
           {arrAlbums.map((colectionMusic, index) => (
             <div key={ index }>
               <div className="Result-cart-album">
@@ -24,14 +23,12 @@ export default class ResultPesquisa extends Component {
                   alt="Coletânea de Musica"
                 />
                 <h2>
-                  Album
-                  {index + 1}
+                  <span data-testid="artist-name">
+                    Artista :
+                    { colectionMusic.artistName }
+                  </span>
                 </h2>
-                <span>{ colectionMusic.collectionName }</span>
-                <span>
-                  Artista
-                  { colectionMusic.artistName }
-                </span>
+                <span data-testid="album-name">{ colectionMusic.collectionName }</span> 
                 <Link
                   data-testid={ `link-to-album-${colectionMusic.collectionId}` }
                   to={ `/album/${colectionMusic.collectionId}` }
@@ -42,6 +39,7 @@ export default class ResultPesquisa extends Component {
             </div>
           ))}
         </div>
+
       </section>
     );
   }

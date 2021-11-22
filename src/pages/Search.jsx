@@ -85,7 +85,6 @@ class Search extends Component {
   render() {
     const { inputName, isButtonDisabled, load, arrAlbums, artist } = this.state;
     if (load) return <Loading />;
-    // if(arrAlbums.length)
     return (
       <div data-testid="page-search" className="App-style-container-forms">
         <Header />
@@ -109,7 +108,7 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
-        <section>
+        <section className="container-main-search">
           {
             arrAlbums.length > 0
               ? <ResultPesquisa arrAlbums={ arrAlbums } artist={ artist } />

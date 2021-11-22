@@ -19,8 +19,8 @@ class Album extends Component {
     this.state = {
       arrayOfMusic: [],
       arrFavorites: [],
-      singer: '',
-      listMusic: '',
+      artist: '',
+      colection: '',
       load: false,
     };
 
@@ -69,8 +69,8 @@ class Album extends Component {
     console.log('O que retorna getMusics(id):', dataGetMusic);
     this.setState(
       { arrayOfMusic: dataGetMusic,
-        singer: dataGetMusic[0].artistName,
-        listMusic: dataGetMusic[0].collectionName,
+        artist: dataGetMusic[0].artistName,
+        colection: dataGetMusic[0].collectionName,
       },
     );
   }
@@ -85,15 +85,16 @@ class Album extends Component {
   }
 
   render() {
-    const { singer, listMusic, arrayOfMusic, load, arrFavorites } = this.state;
+    const { artist, colection, arrayOfMusic, load, arrFavorites } = this.state;
     const [, ...rest] = arrayOfMusic; // , tira o primeiro elemento do array espalhando propriedades no array
     if (load) return <Loading />;
     return (
       <div data-testid="page-album">
-        <Header className="Album-title-style">
-          <span data-testid="artist-name">{ singer }</span>
-          <span data-testid="album-name">{ listMusic }</span>
-        </Header>
+        {/* <Header className="Album-title-style">
+        </Header> */}
+        <Header />
+        <p data-testid="artist-name">{artist}</p>
+        <p data-testid="album-name">{colection}</p>
         <div>
           {rest.map(({ trackName, previewUrl, trackId }) => (
             <MusicCard

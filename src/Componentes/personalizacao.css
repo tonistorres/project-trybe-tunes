@@ -1,9 +1,12 @@
+/** Cabecaço search div contém pesquisa e botão pesqusa */
 .App-style-container-forms {
   align-items: center;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 1px;
+  width: 100%;
 }
 
 .App-form-container {

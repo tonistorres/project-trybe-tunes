@@ -6,8 +6,8 @@
 
 body {
 font: 400 1rem 'Roboto', sans-serif; 
-width: 100vw;
-height: 100vh; 
+/* width: 100vw;
+height: 100vh;  */
 
   
   background: url('../src/assets/backGroundFundo.jpg');
@@ -16,6 +16,53 @@ height: 100vh;
   background-position:top; 
   background: cover; 
   
+}
+
+/* Search.jsx recebe o componente ResultPesquisa*/
+.container-main-search{
+border: 40px solid whitesmoke;
+display: flex;
+flex-direction: row;
+width: 100%;
+}
+
+/* Card ResultPesquisa.jsx**/
+.container-main-results{
+background-color: #fff;
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
+/** Cabecalho de Results */
+.container-albuns-head { 
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+}
+
+/** Cards dentro de ResultPesquisa.jsx  */
+.container-cards-body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/** Cor interna do Card ResultPesquisa.jsx  */
+.Result-cart-album{
+  align-items: center;
+  background-color:white;
+  display: flex;
+  flex-direction: column;
+    justify-content: space-around;
+    margin: 10px 10px 10px 10px;
+  width: 180px;
+  height: 260px;
+  border: 0.5px solid black;
 }
 
 .loading {
@@ -94,20 +141,13 @@ a:active {
 
 .Resul-style-pesquisa{
   align-items: center;
-  background-color: white;
+  background-color: blue;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 
-.Result-cart-album{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 12px 12px 12px 12px;
-  width: 160px;
-}
 .App-style-album{
   background-color: yellow ;
   border: 5px solid black;
